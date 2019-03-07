@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace E_shop.Models
 {
@@ -16,8 +17,9 @@ namespace E_shop.Models
         [Required]
         public string Name { get; set; }
 
-        [MaxLength(250)]
+        
         [Required]
+        [AllowHtml]
         public string Description { get; set; }
 
         public bool Featured { get; set; }

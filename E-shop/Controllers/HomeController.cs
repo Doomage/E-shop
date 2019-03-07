@@ -16,6 +16,8 @@ namespace E_shop.Controllers
         {
             var categories = db.Categories.ToList();
             ViewBag.Categories = categories;
+            var products = db.Products.Where(p => p.Featured == true);
+            ViewBag.Products = products;
 
             return View();
         }

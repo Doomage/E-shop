@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201903071742307_initial2.Designer.cs">
       <DependentUpon>201903071742307_initial2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903071936543_ChangeMAxLength.cs" />
+    <Compile Include="Migrations\201903071936543_ChangeMAxLength.Designer.cs">
+      <DependentUpon>201903071936543_ChangeMAxLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903071742307_initial2.resx">
       <DependentUpon>201903071742307_initial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903071936543_ChangeMAxLength.resx">
+      <DependentUpon>201903071936543_ChangeMAxLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

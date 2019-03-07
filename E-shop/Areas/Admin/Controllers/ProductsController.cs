@@ -1,7 +1,9 @@
 ﻿using E_shop.Models;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 
 namespace E_shop.Areas.Admin.Controllers
@@ -44,8 +46,16 @@ namespace E_shop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Featured,Price,Thumbnail,CategoryID")] Product product)
+        public ActionResult Create(Product product)
         {
+            //take the name from filename 
+            product.Thumbnail = Path.GetFileName(product.ImageFile.FileName);
+            //combining the path with the name from above.
+            //where the image will be saved.!
+            string fileName = Path.Combine(Server.MapPath("~/Image/"), product.Thumbnail);
+
+            product.ImageFile.SaveAs(fileName);
+
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -78,8 +88,18 @@ namespace E_shop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Featured,Price,Thumbnail,CategoryID")] Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase  ImageFile)
         {
+            if (ImageFile != null)
+            {
+                //take the name from filename 
+                product.Thumbnail = Path.GetFileName(product.ImageFile.FileName);
+                //combining the path with the name from above.
+                //where the image will be saved.!
+                string fileName = Path.Combine(Server.MapPath("~/Image/"), product.Thumbnail);
+
+                product.ImageFile.SaveAs(fileName);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
