@@ -7,7 +7,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("Edit", "Categories", FormMethod.Post, new { enctype = "multipart/form-data" })))
+@using (Html.BeginForm("Edit", "Categories", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
                 @Html.AntiForgeryToken()
 
@@ -36,11 +36,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Thumbnail, htmlAttributes: new { @class = "control-label col-md-2" })
             
-                <div class="col-md-6">
-                    @Html.HiddenFor(model => model.Thumbnail)
-                    <input type="file" name="ImageFile" required />
-                    @Html.ValidationMessageFor(model => model.Thumbnail, "", new { @class = "text-danger" })
-                </div>  
+            <div class="col-md-6">
+                @Html.HiddenFor(model => model.Thumbnail)
+                @Html.TextBoxFor(m => m.Thumbnail, new { type = "file" })
+                @Html.ValidationMessageFor(model => model.Thumbnail, "", new { @class = "text-danger" })
+            </div>  
                 <div class="col-md-5">
                     <img height="300" src="~/Image/@Url.Content(Model.Thumbnail)" />
                 </div>

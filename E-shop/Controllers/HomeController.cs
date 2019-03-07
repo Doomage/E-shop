@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_shop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,14 @@ namespace E_shop.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+
         public ActionResult Index()
         {
+            var categories = db.Categories.ToList();
+            ViewBag.Categories = categories;
+
             return View();
         }
 
