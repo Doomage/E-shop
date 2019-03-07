@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Categories</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -27,7 +27,19 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Thumbnail)
+            @*@Html.DisplayFor(modelItem => item.Thumbnail)*@
+            @*if i want to have to layout the image of item*@
+            <div class="popover__wrapper">
+                <a>
+                    <p class="popover-title">
+                        <i class="fas fa-image fa-2x"></i>
+                    </p>
+                </a>
+                <div class="push popover__content">
+                    <p class="popover__message">@Html.DisplayFor(modelItem => item.Name)</p>
+                    <img width="100" src="~/Image/@Url.Content(item.Thumbnail)" />
+                </div>             
+            </div>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
