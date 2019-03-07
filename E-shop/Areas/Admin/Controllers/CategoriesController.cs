@@ -90,13 +90,12 @@ namespace E_shop.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Category category ,HttpPostedFileBase ImageFile)
+        public ActionResult Edit(Category category , HttpPostedFileBase ImageFile)
         {
             if(ImageFile != null)
             {
                 //take the name from filename 
                 category.Thumbnail = Path.GetFileName(category.ImageFile.FileName);
-
                 //combining the path with the name from above.
                 //where the image will be saved.!
                 string fileName = Path.Combine(Server.MapPath("~/Image/"), category.Thumbnail);
