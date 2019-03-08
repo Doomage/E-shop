@@ -42,6 +42,21 @@ namespace E_shop.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+
+        }
+        public ActionResult SingleProduct(int id)
+        {
+            var product = db.Products.Where(x => x.Id == id).SingleOrDefault();
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            Category category = db.Categories.Find(product.CategoryID);
+
+            ViewBag.Category = category;
+           
+            return View(product);
         }
     }
 }
