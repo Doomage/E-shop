@@ -1,12 +1,15 @@
-﻿@{
+﻿@model E_shop.Viewmodels.HomeViewModel
+@{
     ViewBag.Title = "Home Page";
+
 }
+@section carousel{@Html.Partial("HeaderImage")}
 <div class="row">
     <div class="col-mid-12">
         <h2 class="text-center"> Categories</h2>
         <hr />
         <div class="row">
-            @foreach (var category in ViewBag.Categories)
+            @foreach (var category in Model.Categories)
             {
                 <div class="col-md-3 d-none d-sm-block col-sm-5">
                     <a href="#">
@@ -28,29 +31,29 @@
         <h2 class="text-center"> Suggested items.</h2>
         <hr />
         <div class="row">
-            @foreach(var product in ViewBag.Products)
+            @foreach (var product in Model.Products)
             {
                 <div class="col-md-3 d-none d-sm-block col-sm-5">
-                <a href="#">
-                    <img src="~/Image/@Url.Content(product.Thumbnail)" class="product-thumb" />
-                </a>
-                <div class="productTitle">
                     <a href="#">
-                        <h4 class="text-center">@product.Name</h4>
+                        <img src="~/Image/@Url.Content(product.Thumbnail)" class="product-thumb" />
                     </a>
-                    <h4>
-                        <span class="pull-left">
-                            Price : 
-                        </span>
-                        <span class="pull-right">
-                            @product.Price
-                        </span>
-                    </h4>
-                    <button class="addtocart btn btn-block  js-cart" id="@product.Id">
-                        <i class="fa  fa-cart-plus"></i>
-                        Add to Cart!
-                    </button>
-                </div>
+                    <div class="productTitle">
+                        <a href="#">
+                            <h4 class="text-center">@product.Name</h4>
+                        </a>
+                        <h4>
+                            <span class="pull-left">
+                                Price :
+                            </span>
+                            <span class="pull-right">
+                                @product.Price
+                            </span>
+                        </h4>
+                        <button class="addtocart btn btn-block  js-cart" id="@product.Id">
+                            <i class="fa  fa-cart-plus"></i>
+                            Add to Cart!
+                        </button>
+                    </div>
                 </div>
             }
         </div>

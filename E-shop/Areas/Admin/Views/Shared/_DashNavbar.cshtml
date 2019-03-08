@@ -1,7 +1,11 @@
 ﻿<div class="col-md-2 sidebar">
     <div class="sidebar-items">
         <div class="row">
-		
+		    <ul class="list-unstyled">
+                @Html.ActionLink("Home", "Index", new { area = "", controller = "Home" }, new { @class = "navbar-brand" })
+                <li>@Html.ActionLink("Categories","index","Categories", new { area = "" }, new { @class = "navbar-brand" })</li>
+                <li>@Html.ActionLink("Products","index","Products", new { area = "" }, new { @class = "navbar-brand" })</li>
+            </ul>
         </div>
     </div>
 </div>

@@ -27,11 +27,10 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
 
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    @Html.Partial("HeaderImage")   
+    @RenderSection("carousel", required: false)
     <div class="container body-content">
         @RenderBody()
         <hr />

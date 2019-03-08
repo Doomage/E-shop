@@ -1,4 +1,5 @@
 ﻿using E_shop.Models;
+using E_shop.Viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,18 @@ namespace E_shop.Controllers
         public ActionResult Index()
         {
             var categories = db.Categories.ToList();
-            ViewBag.Categories = categories;
-            var products = db.Products.Where(p => p.Featured == true);
-            ViewBag.Products = products;
+           // ViewBag.Categories = categories;
 
-            return View();
+          
+            var products = db.Products.Where(p => p.Featured == true).ToList();
+            //ViewBag.Products = products;
+
+            var ViewModel = new HomeViewModel
+            {
+                Categories = categories,
+                Products = products
+            };
+            return View(ViewModel);
         }
 
         public ActionResult About()
